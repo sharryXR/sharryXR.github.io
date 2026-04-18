@@ -1,0 +1,79 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { isPublicProject } from '../../lib/content-policy.mjs';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+
+  return projects
+    .filter((entry) => isPublicProject(entry.data))
+    .map((entry) => ({
+      params: { slug: entry.slug },
+      props: { entry }
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout pageTitle={entry.data.title} description={entry.data.summary}>
+  <article class="article-shell" data-reveal>
+    <header class="article-header">
+      <span class="eyebrow">Project detail</span>
+      <div class="mini-meta">
+        <span>{entry.data.period}</span>
+        <span>{entry.data.organization}</span>
+        <span>{entry.data.role}</span>
+      </div>
+      <h1>{entry.data.title}</h1>
+      <p class="summary">{entry.data.summary}</p>
+      <div class="chip-row">
+        {entry.data.tags.map((tag) => (
+          <span class="chip">{tag}</span>
+        ))}
+      </div>
+      {entry.data.cover && (
+        <div class="article-cover">
+          <img src={entry.data.cover} alt={entry.data.coverAlt ?? entry.data.title} />
+        </div>
+      )}
+    </header>
+
+    <section class="detail-grid">
+      <article class="detail-card">
+        <h2>Problem</h2>
+        <p>{entry.data.problem}</p>
+      </article>
+      <article class="detail-card">
+        <h2>Key Contributions</h2>
+        <ul>
+          {entry.data.contributions.map((contribution) => (
+            <li>{contribution}</li>
+          ))}
+        </ul>
+      </article>
+      <article class="detail-card">
+        <h2>Results</h2>
+        <ul>
+          {entry.data.results.map((result) => (
+            <li>{result}</li>
+          ))}
+        </ul>
+      </article>
+    </section>
+
+    <section class="prose">
+      <Content />
+    </section>
+
+    {entry.data.links.length > 0 && (
+      <section class="link-pills">
+        {entry.data.links.map((link) => (
+          <a class="link-pill" href={link.href}>{link.label}</a>
+        ))}
+      </section>
+    )}
+  </article>
+</BaseLayout>

@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (left, right) => right.data.date.valueOf() - left.data.date.valueOf()
+);
+---
+
+<BaseLayout pageTitle="Blog" description="Future research notes and essays by Rui Xie.">
+  <section class="page-heading panel" data-reveal>
+    <span class="eyebrow">Blog</span>
+    <h1>A space reserved for research notes, systems write-ups, and benchmark lessons.</h1>
+    <p>
+      The structure is ready, even though I am intentionally keeping the first release focused on profile,
+      publications, and project documentation.
+    </p>
+  </section>
+
+  {posts.length > 0 ? (
+    <section class="section-block" data-reveal="2">
+      <div class="list-stack">
+        {posts.map((post) => (
+          <article class="list-item">
+            <div class="mini-meta">
+              <span>{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </div>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+            <a class="link-pill" href={`/blog/${post.slug}`}>Read article</a>
+          </article>
+        ))}
+      </div>
+    </section>
+  ) : (
+    <section class="empty-state" data-reveal="2">
+      <span class="eyebrow">Planned</span>
+      <h2>Posts are intentionally deferred in the first release.</h2>
+      <p>
+        This section will eventually host notes on GUI agent design, evaluation practice, reinforcement
+        learning experiments, and lessons from deploying multimodal systems in real software environments.
+      </p>
+    </section>
+  )}
+</BaseLayout>

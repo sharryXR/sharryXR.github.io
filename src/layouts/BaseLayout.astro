@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+
+const {
+  title = 'Rui Xie',
+  description = 'Research profile and selected projects by Rui Xie.',
+  pageTitle,
+  pageClass = ''
+} = Astro.props;
+
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/publications', label: 'Publications' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Blog' }
+];
+
+const currentPath = Astro.url.pathname;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:title" content={pageTitle ? `${pageTitle} | Rui Xie` : title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/profile/rui-xie.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{pageTitle ? `${pageTitle} | Rui Xie` : title}</title>
+  </head>
+  <body class={pageClass}>
+    <div class="page-backdrop"></div>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="/">
+          <span class="brand-mark">RX</span>
+          <span class="brand-copy">
+            <strong>Rui Xie</strong>
+            <small>Research profile</small>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          {navItems.map((item) => (
+            <a class:list={{ active: currentPath === item.href }} href={item.href}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </header>
+
+      <main>
+        <slot />
+      </main>
+
+      <footer class="site-footer">
+        <p>Rui Xie · Shanghai Jiao Tong University · GUI agents, evaluation, and multimodal interaction systems.</p>
+        <p class="footer-note">Built with Astro and prepared for GitHub Pages deployment.</p>
+      </footer>
+    </div>
+  </body>
+</html>

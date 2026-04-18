@@ -1,0 +1,210 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { formatPublicationDisplay, getVisibleProjects } from '../lib/content-policy.mjs';
+import { getHeroViewModel, getHomepageFeaturedProjects } from '../lib/homepage-content.mjs';
+import { profile, timeline } from '../data/profile.js';
+
+type PublicationCard = CollectionEntry<'publications'>['data'] & {
+  slug: string;
+  display: {
+    label: string;
+    venue: string | null;
+  };
+};
+
+type ProjectCard = CollectionEntry<'projects'>['data'] & {
+  slug: string;
+};
+
+const publicationEntries = await getCollection('publications');
+const publications: PublicationCard[] = publicationEntries
+  .map((entry) => ({
+    slug: entry.slug,
+    ...entry.data,
+    display: formatPublicationDisplay(entry.data)
+  }))
+  .sort((left, right) => right.year - left.year);
+
+const selectedPublications = publications.filter((publication) => publication.selected).slice(0, 4);
+
+const projectEntries = await getCollection('projects');
+const projects: ProjectCard[] = getVisibleProjects(
+  projectEntries.map((entry) => ({
+    slug: entry.slug,
+    ...entry.data
+  }))
+).sort((left: ProjectCard, right: ProjectCard) => left.order - right.order);
+
+const featuredProjects: ProjectCard[] = getHomepageFeaturedProjects(projects);
+const hero = getHeroViewModel(profile);
+---
+
+<BaseLayout
+  title="Rui Xie"
+  description="Research profile, publications, and flagship project work by Rui Xie."
+>
+  <section class="hero">
+    <article class="panel hero-copy" data-reveal>
+      <span class="eyebrow">Research profile</span>
+      <h1>{hero.headline}</h1>
+      <div class="hero-body">
+        <div class="hero-main">
+          <div class="hero-role">
+            <strong>{profile.name}</strong>
+            <span>{profile.role} · {profile.institution}</span>
+          </div>
+          <div class="hero-summary-stack">
+            {hero.summaryParagraphs.map((paragraph: string) => (
+              <p class="lead">{paragraph}</p>
+            ))}
+          </div>
+        </div>
+        <div class="hero-sidecar">
+          <div class="hero-actions">
+            {profile.contactLinks.map((link, index) => (
+              <a class:list={['button-link', { primary: index === 0 }]} href={link.href}>
+                {link.label}
+              </a>
+            ))}
+          </div>
+          {hero.focusItems.length > 0 && (
+            <dl class="hero-focus-card">
+              <dt>{hero.focusLabel}</dt>
+              <dd class="hero-focus-list">
+                {hero.focusItems.map((item: string) => (
+                  <span class="hero-focus-pill">{item}</span>
+                ))}
+              </dd>
+            </dl>
+          )}
+        </div>
+      </div>
+    </article>
+
+    <aside class="panel hero-side" data-reveal="2">
+      <div class="hero-rail">
+        <div class="hero-portrait-shell">
+          <div class="portrait-frame">
+            <img src="/images/profile/rui-xie.jpg" alt="Portrait of Rui Xie" />
+          </div>
+        </div>
+        <div class="hero-rail-list">
+          {hero.railItems.map((item) => (
+            <dl class="hero-rail-item">
+              <dt>{item.label}</dt>
+              <dd>{item.value}</dd>
+            </dl>
+          ))}
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="section-block" data-reveal>
+    <div class="section-header">
+      <div>
+        <span class="eyebrow">Selected publications</span>
+        <h2>Recent papers and ongoing research threads.</h2>
+      </div>
+      <a class="link-pill" href="/publications">View all publications</a>
+    </div>
+    <div class="publication-grid">
+      {selectedPublications.map((publication) => (
+        <article class="publication-card">
+          <header>
+            <span class:list={['status-badge', { warm: publication.status !== 'published' }]}>
+              {publication.display.label}
+            </span>
+            <h3>{publication.title}</h3>
+            <div class="mini-meta">
+              <span>{publication.role}</span>
+              <span>{publication.year}</span>
+            </div>
+          </header>
+          <p>{publication.summary}</p>
+          <div class="mini-meta">
+            <span>{publication.authors.join(', ')}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-block" data-reveal="2">
+    <div class="section-header">
+      <div>
+        <span class="eyebrow">Featured projects</span>
+        <h2>Flagship work on agents, evaluation, and real-environment systems.</h2>
+      </div>
+      <a class="link-pill" href="/projects">Browse all projects</a>
+    </div>
+    <div class="featured-project-grid">
+      {featuredProjects.map((project) => (
+        <article class="project-card featured-project-card">
+          {project.cover && (
+            <div class="featured-cover-frame">
+              <img src={project.cover} alt={project.coverAlt ?? project.title} />
+            </div>
+          )}
+          <header>
+            <div class="mini-meta">
+              <span>{project.period}</span>
+              <span>{project.role}</span>
+            </div>
+            <h3>{project.title}</h3>
+          </header>
+          <p>{project.summary}</p>
+          <div class="chip-row">
+            {project.tags.map((tag) => (
+              <span class="chip">{tag}</span>
+            ))}
+          </div>
+          <a class="link-pill" href={`/projects/${project.slug}`}>Open project page</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-block" data-reveal="3">
+    <div class="section-header">
+      <div>
+        <span class="eyebrow">Research timeline</span>
+        <h2>From systems foundations to multimodal agent research.</h2>
+      </div>
+    </div>
+    <div class="timeline-grid">
+      {timeline.map((item) => (
+        <article class="timeline-card">
+          <div class="mini-meta">
+            <span>{item.period}</span>
+          </div>
+          <h3>{item.title}</h3>
+          <strong>{item.organization}</strong>
+          <p>{item.summary}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-block" data-reveal>
+    <div class="section-header">
+      <div>
+        <span class="eyebrow">CV and contact</span>
+        <h2>Available for research conversations, collaborations, and project discussions.</h2>
+      </div>
+    </div>
+    <p class="lead">
+      The easiest way to reach me is by email. My current CV is available as a direct download, and this
+      site will continue to grow as a durable record of publications, systems work, and research notes.
+    </p>
+    <div class="link-pills">
+      {profile.contactLinks.map((link, index) => (
+        <a class:list={[index === 0 ? 'button-link' : 'link-pill', { primary: index === 0 }]} href={link.href}>
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

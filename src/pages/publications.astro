@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { formatPublicationDisplay } from '../lib/content-policy.mjs';
+
+const publicationEntries = await getCollection('publications');
+const publications = publicationEntries
+  .map((entry) => ({
+    slug: entry.slug,
+    ...entry.data,
+    display: formatPublicationDisplay(entry.data)
+  }))
+  .sort((left, right) => right.year - left.year);
+---
+
+<BaseLayout
+  pageTitle="Publications"
+  description="Selected publications and research outputs by Rui Xie."
+>
+  <section class="page-heading panel" data-reveal>
+    <span class="eyebrow">Publications</span>
+    <h1>Papers, collaborations, and evolving research directions.</h1>
+    <p>
+      This page keeps public-facing publication information concise. Works that are still under review use
+      venue-neutral status labels until their outcomes can be shared.
+    </p>
+  </section>
+
+  <section class="section-block" data-reveal="2">
+    <div class="list-stack">
+      {publications.map((publication) => (
+        <article class="list-item">
+          <div class="mini-meta">
+            <span class:list={['status-badge', { warm: publication.status !== 'published' }]}>
+              {publication.display.label}
+            </span>
+            <span>{publication.role}</span>
+            <span>{publication.year}</span>
+          </div>
+          <h3>{publication.title}</h3>
+          <p>{publication.authors.join(', ')}</p>
+          <p>{publication.summary}</p>
+          {publication.links.length > 0 && (
+            <div class="link-pills">
+              {publication.links.map((link) => (
+                <a class="link-pill" href={link.href}>{link.label}</a>
+              ))}
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

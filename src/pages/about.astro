@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile, timeline } from '../data/profile.js';
+---
+
+<BaseLayout pageTitle="About" description="About Rui Xie and his research direction.">
+  <section class="page-heading panel" data-reveal>
+    <span class="eyebrow">About</span>
+    <h1>A research profile grounded in real software interaction.</h1>
+    <p>
+      I am interested in the moment when agent reasoning has to meet practical interfaces: messy software,
+      professional tools, shifting workflows, and the need for reliable evaluation.
+    </p>
+  </section>
+
+  <section class="section-block" data-reveal="2">
+    <div class="section-header">
+      <div>
+        <span class="eyebrow">Research direction</span>
+        <h2>GUI agents, LLM agents, RL, and broader general-purpose agent systems.</h2>
+      </div>
+    </div>
+    <div class="prose">
+      {profile.longBio.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))}
+      <p>
+        My current work focuses on making agent systems more dependable in real environments by combining
+        method design, benchmark construction, and systems-oriented implementation.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-block" data-reveal>
+    <div class="section-header">
+      <div>
+        <span class="eyebrow">Interests</span>
+        <h2>Topics I am currently excited about.</h2>
+      </div>
+    </div>
+    <div class="chip-row">
+      {profile.researchInterests.map((interest) => (
+        <span class="chip">{interest}</span>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-block" data-reveal="2">
+    <div class="section-header">
+      <div>
+        <span class="eyebrow">Timeline</span>
+        <h2>Education and research experience.</h2>
+      </div>
+    </div>
+    <div class="timeline-grid">
+      {timeline.map((item) => (
+        <article class="timeline-card">
+          <div class="mini-meta">
+            <span>{item.period}</span>
+          </div>
+          <h3>{item.title}</h3>
+          <strong>{item.organization}</strong>
+          <p>{item.summary}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-block" data-reveal>
+    <div class="section-header">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h2>Best ways to get in touch.</h2>
+      </div>
+    </div>
+    <div class="link-pills">
+      {profile.contactLinks.map((link) => (
+        <a class="link-pill" href={link.href}>{link.label}</a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

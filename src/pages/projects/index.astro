@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getVisibleProjects } from '../../lib/content-policy.mjs';
+
+type ProjectCard = CollectionEntry<'projects'>['data'] & {
+  slug: string;
+};
+
+const projectEntries = await getCollection('projects');
+const projects: ProjectCard[] = getVisibleProjects(
+  projectEntries.map((entry) => ({
+    slug: entry.slug,
+    ...entry.data
+  }))
+).sort((left: ProjectCard, right: ProjectCard) => left.order - right.order);
+---
+
+<BaseLayout pageTitle="Projects" description="Selected projects by Rui Xie.">
+  <section class="page-heading panel" data-reveal>
+    <span class="eyebrow">Projects</span>
+    <h1>Systems and studies that shaped my current research agenda.</h1>
+    <p>
+      These projects span improvement methods for GUI agents, domain-specific benchmarks, multi-app
+      automation, data construction, and reinforcement learning pipelines.
+    </p>
+  </section>
+
+  <section class="section-block" data-reveal="2">
+    <div class="card-grid">
+      {projects.map((project) => (
+        <article class="project-card">
+          {project.cover && (
+            <div class="cover-frame">
+              <img src={project.cover} alt={project.coverAlt ?? project.title} />
+            </div>
+          )}
+          <header>
+            <div class="mini-meta">
+              <span>{project.period}</span>
+              <span>{project.organization}</span>
+            </div>
+            <h3>{project.title}</h3>
+          </header>
+          <p>{project.summary}</p>
+          <div class="chip-row">
+            {project.tags.map((tag) => (
+              <span class="chip">{tag}</span>
+            ))}
+          </div>
+          <a class="link-pill" href={`/projects/${project.slug}`}>Read project details</a>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

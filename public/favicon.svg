@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Rui Xie monogram</title>
+  <defs>
+    <linearGradient id="g" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f766e" />
+      <stop offset="100%" stop-color="#c76b2b" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="#fff8ef" />
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#g)" />
+  <path d="M19 20h10.8c7.8 0 12.2 3.7 12.2 10 0 4.1-2 7-5.8 8.5L44 46h-8.6l-6.7-6.4h-1.4V46H19V20Zm8.3 13.1h2.2c3.2 0 4.9-1.1 4.9-3.5 0-2.2-1.7-3.3-4.9-3.3h-2.2v6.8Z" fill="#fff8ef"/>
+  <path d="M16 48l10.2-28h7L23 48h-7Zm16 0 10.2-28h6.8L38.8 48H32Z" fill="#15232f" opacity=".24"/>
+</svg>
