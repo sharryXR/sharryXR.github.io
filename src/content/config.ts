@@ -14,6 +14,7 @@ const publications = defineCollection({
     status: z.enum(['published', 'under-review', 'in-preparation']),
     statusLabel: z.string().optional(),
     venueDisplay: z.string().optional(),
+    order: z.number().default(999),
     role: z.string(),
     summary: z.string(),
     selected: z.boolean().default(false),

@@ -5,7 +5,7 @@ organization: Shanghai Jiao Tong University / BIGAI
 role: First Author
 visibility: public
 featured: true
-order: 1
+order: 2
 summary: A plug-and-play framework for reducing planning and grounding bias in domain-specific GUI agents by retrieving and distilling task-relevant tutorial knowledge.
 problem: General GUI agents degrade sharply in domain-specific software because they lack procedural knowledge and interface-specific grounding cues.
 contributions:

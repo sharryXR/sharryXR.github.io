@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { formatPublicationDisplay } from '../lib/content-policy.mjs';
+import { formatPublicationDisplay, sortPublications } from '../lib/content-policy.mjs';
 
 const publicationEntries = await getCollection('publications');
 const publications = publicationEntries
@@ -9,8 +9,9 @@ const publications = publicationEntries
     slug: entry.slug,
     ...entry.data,
     display: formatPublicationDisplay(entry.data)
-  }))
-  .sort((left, right) => right.year - left.year);
+  }));
+
+const sortedPublications = sortPublications(publications);
 ---
 
 <BaseLayout
@@ -28,7 +29,7 @@ const publications = publicationEntries
 
   <section class="section-block" data-reveal="2">
     <div class="list-stack">
-      {publications.map((publication) => (
+      {sortedPublications.map((publication) => (
         <article class="list-item">
           <div class="mini-meta">
             <span class:list={['status-badge', { warm: publication.status !== 'published' }]}>

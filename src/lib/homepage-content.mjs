@@ -11,6 +11,16 @@ export function getHeroViewModel(profile) {
   };
 }
 
+export function getHeroTimeline(timeline, limit = 4) {
+  const items = timeline ?? [];
+  const highlightedItems = items.filter((item) => item.heroTimeline);
+  const sourceItems = highlightedItems.length > 0 ? highlightedItems : items;
+
+  return sourceItems
+    .slice(0, limit)
+    .map(({ period, title, organization }) => ({ period, title, organization }));
+}
+
 export function getHomepageFeaturedProjects(projects) {
   return projects
     .filter((project) => project.featured)

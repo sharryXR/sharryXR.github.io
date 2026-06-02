@@ -2,8 +2,8 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { formatPublicationDisplay, getVisibleProjects } from '../lib/content-policy.mjs';
-import { getHeroViewModel, getHomepageFeaturedProjects } from '../lib/homepage-content.mjs';
+import { formatPublicationDisplay, getVisibleProjects, sortPublications } from '../lib/content-policy.mjs';
+import { getHeroTimeline, getHeroViewModel, getHomepageFeaturedProjects } from '../lib/homepage-content.mjs';
 import { profile, timeline } from '../data/profile.js';
 
 type PublicationCard = CollectionEntry<'publications'>['data'] & {
@@ -24,10 +24,9 @@ const publications: PublicationCard[] = publicationEntries
     slug: entry.slug,
     ...entry.data,
     display: formatPublicationDisplay(entry.data)
-  }))
-  .sort((left, right) => right.year - left.year);
+  }));
 
-const selectedPublications = publications.filter((publication) => publication.selected).slice(0, 4);
+const selectedPublications = sortPublications(publications).filter((publication) => publication.selected).slice(0, 4);
 
 const projectEntries = await getCollection('projects');
 const projects: ProjectCard[] = getVisibleProjects(
@@ -39,6 +38,7 @@ const projects: ProjectCard[] = getVisibleProjects(
 
 const featuredProjects: ProjectCard[] = getHomepageFeaturedProjects(projects);
 const hero = getHeroViewModel(profile);
+const heroTimeline = getHeroTimeline(timeline);
 ---
 
 <BaseLayout
@@ -48,20 +48,20 @@ const hero = getHeroViewModel(profile);
   <section class="hero">
     <article class="panel hero-copy" data-reveal>
       <span class="eyebrow">Research profile</span>
-      <h1>{hero.headline}</h1>
-      <div class="hero-body">
-        <div class="hero-main">
-          <div class="hero-role">
-            <strong>{profile.name}</strong>
-            <span>{profile.role} · {profile.institution}</span>
+      <div class="hero-content-grid">
+        <div class="hero-title-stack">
+          <h1>{hero.headline}</h1>
+          <div class="hero-main">
+            <div class="hero-role">
+              <strong>{profile.name}</strong>
+              <span>{profile.role} · {profile.institution}</span>
+            </div>
+            <div class="hero-summary-stack">
+              {hero.summaryParagraphs.map((paragraph: string) => (
+                <p class="lead">{paragraph}</p>
+              ))}
+            </div>
           </div>
-          <div class="hero-summary-stack">
-            {hero.summaryParagraphs.map((paragraph: string) => (
-              <p class="lead">{paragraph}</p>
-            ))}
-          </div>
-        </div>
-        <div class="hero-sidecar">
           <div class="hero-actions">
             {profile.contactLinks.map((link, index) => (
               <a class:list={['button-link', { primary: index === 0 }]} href={link.href}>
@@ -69,6 +69,24 @@ const hero = getHeroViewModel(profile);
               </a>
             ))}
           </div>
+        </div>
+        <div class="hero-sidecar">
+          {heroTimeline.length > 0 && (
+            <section class="hero-timeline-card" aria-labelledby="hero-timeline-title">
+              <span id="hero-timeline-title" class="hero-timeline-title">Experience timeline</span>
+              <ol class="hero-timeline-list">
+                {heroTimeline.map((item) => (
+                  <li class="hero-timeline-item">
+                    <span class="hero-timeline-period">{item.period}</span>
+                    <span class="hero-timeline-role">
+                      <strong>{item.title}</strong>
+                      <span>{item.organization}</span>
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
           {hero.focusItems.length > 0 && (
             <dl class="hero-focus-card">
               <dt>{hero.focusLabel}</dt>

@@ -5,7 +5,7 @@ organization: Shanghai Jiao Tong University / Suzhou Laboratory
 role: Co-first Author
 visibility: public
 featured: true
-order: 2
+order: 3
 summary: A real-environment benchmark for multimodal agents working with professional materials science software, covering GUI operation, code execution, and cross-tool workflows.
 problem: Multimodal agents are usually measured on general-purpose software, leaving a major gap in our understanding of how they perform in scientific tools and professional workflows.
 contributions:

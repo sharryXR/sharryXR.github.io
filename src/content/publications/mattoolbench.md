@@ -9,8 +9,7 @@ authors:
   - Kai Yu
   - Xin Chen
 year: 2026
-status: in-preparation
-statusLabel: In Preparation
+status: under-review
 role: Co-first Author
 summary: A real-environment benchmark that evaluates multimodal agents on professional materials science workflows spanning GUI tools, code execution, and cross-tool coordination.
 selected: true
