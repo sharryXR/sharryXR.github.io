@@ -82,35 +82,43 @@ test('homepage source uses a dedicated featured project media shell', async () =
   assert.ok(source.includes('featured-cover-frame'));
 });
 
-test('homepage source uses a dedicated left info column for the hero timeline and research directions', async () => {
+test('homepage source uses one left profile column for portrait, school metadata, timeline, and research directions', async () => {
   const source = await readFile(new URL('../src/pages/index.astro', import.meta.url), 'utf8');
 
   assert.ok(source.includes('hero-content-grid'));
   assert.ok(source.includes('hero-title-stack'));
-  assert.ok(source.includes('hero-info-column'));
+  assert.ok(source.includes('hero-profile-column'));
+  assert.ok(source.includes('hero-profile-card'));
+  assert.ok(!source.includes('<aside class="panel hero-side"'));
+  assert.ok(source.indexOf('hero-profile-card') < source.indexOf('hero-timeline-card'));
   assert.ok(source.indexOf('hero-timeline-card') < source.indexOf('hero-focus-card'));
   assert.ok(source.includes('hero-focus-card'));
+  assert.ok(source.includes('hero.railItems'));
   assert.ok(source.includes('hero-summary-stack'));
   assert.ok(source.includes('hero-focus-list'));
 });
 
-test('hero styles place timeline and research directions in a standalone left column', async () => {
+test('hero styles make a full-width hero card with a narrow left profile column and wider main text', async () => {
   const source = await readFile(new URL('../src/styles/global.css', import.meta.url), 'utf8');
 
+  assert.ok(source.includes('.hero {\n  display: block;'));
   assert.ok(source.includes('.hero-content-grid {'));
   assert.ok(source.includes('.hero-title-stack {'));
-  assert.ok(source.includes('grid-template-areas: \"info title\";'));
-  assert.ok(source.includes('grid-area: info;'));
+  assert.ok(source.includes('grid-template-columns: minmax(250px, 0.44fr) minmax(0, 1.56fr);'));
+  assert.ok(source.includes('grid-template-areas: \"profile title\";'));
+  assert.ok(source.includes('grid-area: profile;'));
   assert.ok(source.includes('grid-area: title;'));
   assert.ok(source.includes('.hero-main {\n  display: grid;\n  gap: 0.9rem;\n  align-content: start;'));
-  assert.ok(source.includes('.hero-info-column {\n  display: grid;\n  gap: 0.8rem;\n  align-content: start;'));
+  assert.ok(source.includes('.hero-profile-column {\n  display: grid;\n  gap: 0.8rem;\n  align-content: start;'));
+  assert.ok(source.includes('.hero-profile-card {'));
 });
 
-test('hero styles stretch both primary panels to the same height', async () => {
+test('hero styles keep the profile column and main copy top-aligned in one panel', async () => {
   const source = await readFile(new URL('../src/styles/global.css', import.meta.url), 'utf8');
 
-  assert.ok(source.includes('align-items: stretch;'));
-  assert.ok(source.includes('.hero-copy,\n.hero-side {\n  height: 100%;'));
+  assert.ok(source.includes('align-items: start;'));
+  assert.ok(source.includes('.hero-copy {\n  display: grid;'));
+  assert.ok(!source.includes('.hero-copy,\n.hero-side {\n  height: 100%;'));
 });
 
 test('profile highlights agentic RL and current internship timeline', () => {

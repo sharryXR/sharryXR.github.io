@@ -49,28 +49,22 @@ const heroTimeline = getHeroTimeline(timeline);
     <article class="panel hero-copy" data-reveal>
       <span class="eyebrow">Research profile</span>
       <div class="hero-content-grid">
-        <div class="hero-title-stack">
-          <h1>{hero.headline}</h1>
-          <div class="hero-main">
-            <div class="hero-role">
-              <strong>{profile.name}</strong>
-              <span>{profile.role} · {profile.institution}</span>
+        <div class="hero-profile-column">
+          <section class="hero-profile-card" aria-label="Profile details">
+            <div class="hero-portrait-shell">
+              <div class="portrait-frame">
+                <img src="/images/profile/rui-xie.jpg" alt="Portrait of Rui Xie" />
+              </div>
             </div>
-            <div class="hero-summary-stack">
-              {hero.summaryParagraphs.map((paragraph: string) => (
-                <p class="lead">{paragraph}</p>
+            <div class="hero-rail-list">
+              {hero.railItems.map((item) => (
+                <dl class="hero-rail-item">
+                  <dt>{item.label}</dt>
+                  <dd>{item.value}</dd>
+                </dl>
               ))}
             </div>
-          </div>
-          <div class="hero-actions">
-            {profile.contactLinks.map((link, index) => (
-              <a class:list={['button-link', { primary: index === 0 }]} href={link.href}>
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </div>
-        <div class="hero-info-column">
+          </section>
           {heroTimeline.length > 0 && (
             <section class="hero-timeline-card" aria-labelledby="hero-timeline-title">
               <span id="hero-timeline-title" class="hero-timeline-title">Experience timeline</span>
@@ -98,26 +92,29 @@ const heroTimeline = getHeroTimeline(timeline);
             </dl>
           )}
         </div>
-      </div>
-    </article>
-
-    <aside class="panel hero-side" data-reveal="2">
-      <div class="hero-rail">
-        <div class="hero-portrait-shell">
-          <div class="portrait-frame">
-            <img src="/images/profile/rui-xie.jpg" alt="Portrait of Rui Xie" />
+        <div class="hero-title-stack">
+          <h1>{hero.headline}</h1>
+          <div class="hero-main">
+            <div class="hero-role">
+              <strong>{profile.name}</strong>
+              <span>{profile.role} · {profile.institution}</span>
+            </div>
+            <div class="hero-summary-stack">
+              {hero.summaryParagraphs.map((paragraph: string) => (
+                <p class="lead">{paragraph}</p>
+              ))}
+            </div>
+          </div>
+          <div class="hero-actions">
+            {profile.contactLinks.map((link, index) => (
+              <a class:list={['button-link', { primary: index === 0 }]} href={link.href}>
+                {link.label}
+              </a>
+            ))}
           </div>
         </div>
-        <div class="hero-rail-list">
-          {hero.railItems.map((item) => (
-            <dl class="hero-rail-item">
-              <dt>{item.label}</dt>
-              <dd>{item.value}</dd>
-            </dl>
-          ))}
-        </div>
       </div>
-    </aside>
+    </article>
   </section>
 
   <section class="section-block" data-reveal>
