@@ -81,16 +81,6 @@ const heroTimeline = getHeroTimeline(timeline);
               </ol>
             </section>
           )}
-          {hero.focusItems.length > 0 && (
-            <dl class="hero-focus-card">
-              <dt>{hero.focusLabel}</dt>
-              <dd class="hero-focus-list">
-                {hero.focusItems.map((item: string) => (
-                  <span class="hero-focus-pill">{item}</span>
-                ))}
-              </dd>
-            </dl>
-          )}
         </div>
         <div class="hero-title-stack">
           <h1>{hero.headline}</h1>
@@ -104,6 +94,16 @@ const heroTimeline = getHeroTimeline(timeline);
                 <p class="lead">{paragraph}</p>
               ))}
             </div>
+            {hero.focusItems.length > 0 && (
+              <dl class="hero-focus-card">
+                <dt>{hero.focusLabel}</dt>
+                <dd class="hero-focus-list">
+                  {hero.focusItems.map((item: string) => (
+                    <span class="hero-focus-pill">{item}</span>
+                  ))}
+                </dd>
+              </dl>
+            )}
           </div>
           <div class="hero-actions">
             {profile.contactLinks.map((link, index) => (

@@ -11,7 +11,7 @@ export function getHeroViewModel(profile) {
   };
 }
 
-export function getHeroTimeline(timeline, limit = 4) {
+export function getHeroTimeline(timeline, limit = 3) {
   const items = timeline ?? [];
   const highlightedItems = items.filter((item) => item.heroTimeline);
   const sourceItems = highlightedItems.length > 0 ? highlightedItems : items;

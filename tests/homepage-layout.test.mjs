@@ -39,7 +39,7 @@ test('homepage featured projects helper keeps only featured items in order', () 
   );
 });
 
-test('hero timeline helper exposes four concise opening milestones including undergraduate study', () => {
+test('hero timeline helper exposes three concise recent opening milestones', () => {
   assert.deepEqual(getHeroTimeline(timeline), [
     {
       period: 'May 2026 - Present',
@@ -55,11 +55,6 @@ test('hero timeline helper exposes four concise opening milestones including und
       period: 'Mar 2025 - Aug 2025',
       title: 'Research Intern',
       organization: 'Beijing Institute for General Artificial Intelligence (BIGAI)'
-    },
-    {
-      period: '2021 - 2025',
-      title: 'B.Eng. in Computer Science',
-      organization: 'Shanghai Jiao Tong University'
     }
   ]);
 });
@@ -82,7 +77,7 @@ test('homepage source uses a dedicated featured project media shell', async () =
   assert.ok(source.includes('featured-cover-frame'));
 });
 
-test('homepage source uses one left profile column for portrait, school metadata, timeline, and research directions', async () => {
+test('homepage source uses a compact left profile column and moves research directions into the main copy', async () => {
   const source = await readFile(new URL('../src/pages/index.astro', import.meta.url), 'utf8');
 
   assert.ok(source.includes('hero-content-grid'));
@@ -91,25 +86,26 @@ test('homepage source uses one left profile column for portrait, school metadata
   assert.ok(source.includes('hero-profile-card'));
   assert.ok(!source.includes('<aside class="panel hero-side"'));
   assert.ok(source.indexOf('hero-profile-card') < source.indexOf('hero-timeline-card'));
-  assert.ok(source.indexOf('hero-timeline-card') < source.indexOf('hero-focus-card'));
+  assert.ok(source.indexOf('hero-title-stack') < source.indexOf('hero-focus-card'));
+  assert.ok(source.indexOf('hero-focus-card') < source.indexOf('hero-actions'));
   assert.ok(source.includes('hero-focus-card'));
   assert.ok(source.includes('hero.railItems'));
   assert.ok(source.includes('hero-summary-stack'));
   assert.ok(source.includes('hero-focus-list'));
 });
 
-test('hero styles make a full-width hero card with a narrow left profile column and wider main text', async () => {
+test('hero styles make a full-width hero card with a compact left profile column and wider main text', async () => {
   const source = await readFile(new URL('../src/styles/global.css', import.meta.url), 'utf8');
 
   assert.ok(source.includes('.hero {\n  display: block;'));
   assert.ok(source.includes('.hero-content-grid {'));
   assert.ok(source.includes('.hero-title-stack {'));
-  assert.ok(source.includes('grid-template-columns: minmax(250px, 0.44fr) minmax(0, 1.56fr);'));
+  assert.ok(source.includes('grid-template-columns: minmax(220px, 0.36fr) minmax(0, 1.64fr);'));
   assert.ok(source.includes('grid-template-areas: \"profile title\";'));
   assert.ok(source.includes('grid-area: profile;'));
   assert.ok(source.includes('grid-area: title;'));
   assert.ok(source.includes('.hero-main {\n  display: grid;\n  gap: 0.9rem;\n  align-content: start;'));
-  assert.ok(source.includes('.hero-profile-column {\n  display: grid;\n  gap: 0.8rem;\n  align-content: start;'));
+  assert.ok(source.includes('.hero-profile-column {\n  display: grid;\n  gap: 0.68rem;\n  align-content: start;'));
   assert.ok(source.includes('.hero-profile-card {'));
 });
 
@@ -122,6 +118,8 @@ test('hero styles keep the profile column and main copy top-aligned in one panel
 });
 
 test('profile highlights agentic RL and current internship timeline', () => {
+  assert.ok(profile.heroSummary.some((paragraph) => paragraph.includes('Qwen Foundation Model Team')));
+  assert.ok(profile.heroSummary.some((paragraph) => paragraph.includes('Since May 2026')));
   assert.deepEqual(profile.heroRail.researchDirections, ['GUI agents', 'LLM agents', 'Agentic RL', 'AGI']);
   assert.deepEqual(profile.researchInterests, ['GUI agents', 'LLM agents', 'Agentic RL', 'AGI']);
 

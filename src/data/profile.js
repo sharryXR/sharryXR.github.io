@@ -9,7 +9,8 @@ export const profile = {
   heroHeadline: 'Building agents for software and everyday work.',
   heroSummary: [
     'I am a PhD student in Computer Science at Shanghai Jiao Tong University, working toward generally capable agents that can take on work across software, devices, and everyday environments.',
-    'I care about agent systems that can complete real work, from computer operation to broader everyday tasks, with an emphasis on grounded interaction, reliable training pipelines, and evaluation in real settings.'
+    'I care about agent systems that can complete real work, from computer operation to broader everyday tasks, with an emphasis on grounded interaction, reliable training pipelines, and evaluation in real settings.',
+    "Since May 2026, I have been interning with Alibaba's Qwen Foundation Model Team, working on GUI-agent post-training, software-use workflows, and evaluation for foundation-model agents."
   ],
   heroRail: {
     institution: 'Shanghai Jiao Tong University',
