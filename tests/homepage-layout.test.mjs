@@ -42,7 +42,7 @@ test('homepage featured projects helper keeps only featured items in order', () 
 test('hero timeline helper exposes four concise opening milestones including undergraduate study', () => {
   assert.deepEqual(getHeroTimeline(timeline), [
     {
-      period: 'Jun 2026 - Present',
+      period: 'May 2026 - Present',
       title: 'Research Intern',
       organization: 'Alibaba · Qwen Foundation Model Team'
     },
@@ -82,25 +82,28 @@ test('homepage source uses a dedicated featured project media shell', async () =
   assert.ok(source.includes('featured-cover-frame'));
 });
 
-test('homepage source uses a title-aligned opening grid for the hero timeline', async () => {
+test('homepage source uses a dedicated left info column for the hero timeline and research directions', async () => {
   const source = await readFile(new URL('../src/pages/index.astro', import.meta.url), 'utf8');
 
   assert.ok(source.includes('hero-content-grid'));
   assert.ok(source.includes('hero-title-stack'));
-  assert.ok(source.includes('hero-sidecar'));
+  assert.ok(source.includes('hero-info-column'));
   assert.ok(source.indexOf('hero-timeline-card') < source.indexOf('hero-focus-card'));
   assert.ok(source.includes('hero-focus-card'));
   assert.ok(source.includes('hero-summary-stack'));
   assert.ok(source.includes('hero-focus-list'));
 });
 
-test('hero styles keep left copy compact while aligning right-side content near the title', async () => {
+test('hero styles place timeline and research directions in a standalone left column', async () => {
   const source = await readFile(new URL('../src/styles/global.css', import.meta.url), 'utf8');
 
   assert.ok(source.includes('.hero-content-grid {'));
   assert.ok(source.includes('.hero-title-stack {'));
+  assert.ok(source.includes('grid-template-areas: \"info title\";'));
+  assert.ok(source.includes('grid-area: info;'));
+  assert.ok(source.includes('grid-area: title;'));
   assert.ok(source.includes('.hero-main {\n  display: grid;\n  gap: 0.9rem;\n  align-content: start;'));
-  assert.ok(source.includes('.hero-sidecar {\n  display: grid;\n  gap: 0.8rem;\n  align-content: start;'));
+  assert.ok(source.includes('.hero-info-column {\n  display: grid;\n  gap: 0.8rem;\n  align-content: start;'));
 });
 
 test('hero styles stretch both primary panels to the same height', async () => {
@@ -116,7 +119,7 @@ test('profile highlights agentic RL and current internship timeline', () => {
 
   assert.ok(
     timeline.some((item) =>
-      item.period === 'Jun 2026 - Present' &&
+      item.period === 'May 2026 - Present' &&
       item.title === 'Research Intern' &&
       item.organization === 'Alibaba · Qwen Foundation Model Team' &&
       item.summary.includes('GUI-agent post-training')

@@ -36,7 +36,7 @@ export const profile = {
 
 export const timeline = [
   {
-    period: 'Jun 2026 - Present',
+    period: 'May 2026 - Present',
     title: 'Research Intern',
     organization: 'Alibaba · Qwen Foundation Model Team',
     heroTimeline: true,

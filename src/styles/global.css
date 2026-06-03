@@ -258,7 +258,8 @@ main {
 
 .hero-content-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.18fr) minmax(235px, 0.8fr);
+  grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
+  grid-template-areas: "info title";
   gap: 1rem 1.15rem;
   align-items: start;
   min-width: 0;
@@ -266,6 +267,7 @@ main {
 
 .hero-title-stack {
   display: grid;
+  grid-area: title;
   gap: 1.05rem;
   align-content: start;
   min-width: 0;
@@ -299,10 +301,11 @@ main {
   color: var(--ink-soft);
 }
 
-.hero-sidecar {
+.hero-info-column {
   display: grid;
   gap: 0.8rem;
   align-content: start;
+  grid-area: info;
   min-width: 0;
 }
 
@@ -829,6 +832,9 @@ main {
 
   .hero-content-grid {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "info";
     align-items: start;
   }
 
