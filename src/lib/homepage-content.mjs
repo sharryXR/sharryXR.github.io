@@ -5,13 +5,13 @@ export function getHeroViewModel(profile) {
     focusLabel: profile.heroRail.researchDirections ? 'Research Directions' : null,
     focusItems: profile.heroRail.researchDirections ?? [],
     railItems: [
-      { label: 'Institution', value: profile.heroRail.institution },
-      { label: 'School / Lab', value: profile.heroRail.lab }
+      { label: 'Institution', value: profile.heroRail.shortInstitution ?? profile.heroRail.institution },
+      { label: 'Lab', value: profile.heroRail.shortLab ?? profile.heroRail.lab }
     ]
   };
 }
 
-export function getHeroTimeline(timeline, limit = 3) {
+export function getHeroTimeline(timeline, limit = 4) {
   const items = timeline ?? [];
   const highlightedItems = items.filter((item) => item.heroTimeline);
   const sourceItems = highlightedItems.length > 0 ? highlightedItems : items;

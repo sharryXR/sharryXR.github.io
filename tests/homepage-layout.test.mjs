@@ -20,8 +20,8 @@ test('hero view model exposes explicit profile-rail metadata', () => {
   assert.equal(hero.focusLabel, 'Research Directions');
   assert.deepEqual(hero.focusItems, ['GUI agents', 'LLM agents', 'Agentic RL', 'AGI']);
   assert.deepEqual(hero.railItems, [
-    { label: 'Institution', value: 'Shanghai Jiao Tong University' },
-    { label: 'School / Lab', value: 'School of Computer Science · X-LANCE Lab' }
+    { label: 'Institution', value: 'Shanghai Jiao Tong University (SJTU)' },
+    { label: 'Lab', value: 'X-LANCE Lab' }
   ]);
 });
 
@@ -39,7 +39,7 @@ test('homepage featured projects helper keeps only featured items in order', () 
   );
 });
 
-test('hero timeline helper exposes three concise recent opening milestones', () => {
+test('hero timeline helper exposes four concise opening milestones including undergraduate study', () => {
   assert.deepEqual(getHeroTimeline(timeline), [
     {
       period: 'May 2026 - Present',
@@ -55,6 +55,11 @@ test('hero timeline helper exposes three concise recent opening milestones', () 
       period: 'Mar 2025 - Aug 2025',
       title: 'Research Intern',
       organization: 'Beijing Institute for General Artificial Intelligence (BIGAI)'
+    },
+    {
+      period: '2021 - 2025',
+      title: 'B.Eng. in Computer Science',
+      organization: 'Shanghai Jiao Tong University'
     }
   ]);
 });
@@ -108,10 +113,14 @@ test('hero styles stack the left profile card vertically with a larger portrait'
   assert.ok(source.includes('.hero-profile-column {\n  display: grid;\n  gap: 0.85rem;\n  align-content: start;'));
   assert.ok(source.includes('.hero-profile-card {'));
   assert.ok(source.includes('grid-template-columns: 1fr;'));
+  assert.ok(source.includes('gap: 0.62rem;'));
+  assert.ok(source.includes('padding: 0.72rem;'));
   assert.ok(source.includes('justify-items: center;'));
   assert.ok(source.includes('width: min(100%, 160px);'));
   assert.ok(source.includes('max-height: 229px;'));
   assert.ok(source.includes('.hero-profile-card .hero-rail-list {\n  width: 100%;'));
+  assert.ok(source.includes('.hero-profile-card .hero-rail-item {\n  margin: 0;'));
+  assert.ok(source.includes('min-height: 18.25rem;'));
 });
 
 test('hero styles keep the profile column and main copy top-aligned in one panel', async () => {

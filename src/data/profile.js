@@ -15,6 +15,8 @@ export const profile = {
   heroRail: {
     institution: 'Shanghai Jiao Tong University',
     lab: 'School of Computer Science · X-LANCE Lab',
+    shortInstitution: 'Shanghai Jiao Tong University (SJTU)',
+    shortLab: 'X-LANCE Lab',
     researchDirections: ['GUI agents', 'LLM agents', 'Agentic RL', 'AGI']
   },
   shortBio:
