@@ -303,26 +303,29 @@ main {
 
 .hero-profile-card {
   display: grid;
-  grid-template-columns: 96px minmax(0, 1fr);
-  gap: 0.8rem;
-  align-items: center;
-  padding: 0.82rem;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  align-items: start;
+  justify-items: center;
+  padding: 0.95rem;
   border-radius: calc(var(--radius-md) - 2px);
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.78);
 }
 
 .hero-profile-card .hero-portrait-shell {
-  padding: 0.44rem;
+  width: 100%;
+  padding: 0.55rem;
 }
 
 .hero-profile-card .portrait-frame {
-  width: min(100%, 86px);
-  max-height: 123px;
+  width: min(100%, 160px);
+  max-height: 229px;
   border-radius: calc(var(--radius-md) - 4px);
 }
 
 .hero-profile-card .hero-rail-list {
+  width: 100%;
   gap: 0.46rem;
 }
 

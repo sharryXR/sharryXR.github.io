@@ -94,7 +94,7 @@ test('homepage source uses a compact left profile column and moves research dire
   assert.ok(source.includes('hero-focus-list'));
 });
 
-test('hero styles make a full-width hero card with a moderately sized left profile column and wide main text', async () => {
+test('hero styles stack the left profile card vertically with a larger portrait', async () => {
   const source = await readFile(new URL('../src/styles/global.css', import.meta.url), 'utf8');
 
   assert.ok(source.includes('.hero {\n  display: block;'));
@@ -107,8 +107,11 @@ test('hero styles make a full-width hero card with a moderately sized left profi
   assert.ok(source.includes('.hero-main {\n  display: grid;\n  gap: 0.9rem;\n  align-content: start;'));
   assert.ok(source.includes('.hero-profile-column {\n  display: grid;\n  gap: 0.85rem;\n  align-content: start;'));
   assert.ok(source.includes('.hero-profile-card {'));
-  assert.ok(source.includes('grid-template-columns: 96px minmax(0, 1fr);'));
-  assert.ok(source.includes('width: min(100%, 86px);'));
+  assert.ok(source.includes('grid-template-columns: 1fr;'));
+  assert.ok(source.includes('justify-items: center;'));
+  assert.ok(source.includes('width: min(100%, 160px);'));
+  assert.ok(source.includes('max-height: 229px;'));
+  assert.ok(source.includes('.hero-profile-card .hero-rail-list {\n  width: 100%;'));
 });
 
 test('hero styles keep the profile column and main copy top-aligned in one panel', async () => {
