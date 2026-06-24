@@ -13,7 +13,9 @@ venueDisplay: ECCV 2026
 role: First Author
 summary: A training-free, plug-and-play framework that retrieves task-relevant tutorial videos and distills transferable planning and grounding knowledge for domain-specific GUI agents, yielding +4.47 to +7.48 point gains on OSWorld without modifying agent parameters.
 selected: true
-links: []
+links:
+  - label: arXiv
+    href: https://arxiv.org/abs/2603.26266
 ---
 
 GUIDE is motivated by a recurring failure mode in GUI agents: they struggle when software workflows and interface conventions fall outside the distribution of their pretraining data. Rather than retraining the whole agent, the project focuses on retrieving external knowledge at run time and converting that knowledge into agent-usable guidance.

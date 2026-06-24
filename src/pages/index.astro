@@ -142,6 +142,13 @@ const heroTimeline = getHeroTimeline(timeline);
           <div class="mini-meta">
             <span>{publication.authors.join(', ')}</span>
           </div>
+          {publication.links.length > 0 && (
+            <div class="link-pills">
+              {publication.links.map((link) => (
+                <a class="link-pill" href={link.href}>{link.label}</a>
+              ))}
+            </div>
+          )}
         </article>
       ))}
     </div>
