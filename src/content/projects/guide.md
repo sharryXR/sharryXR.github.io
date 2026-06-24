@@ -13,8 +13,9 @@ contributions:
   - Built an automatic annotation stage that extracts transferable planning and grounding hints from tutorial snippets.
   - Integrated the resulting knowledge into downstream agent execution without retraining the target agent.
 results:
-  - Improved domain-task performance in both single-model and multi-agent settings.
-  - Reduced execution failures caused by missing software-specific knowledge.
+  - Accepted to ECCV 2026.
+  - Improved OSWorld success rate by +4.47 to +7.48 percentage points across both single-model and multi-agent settings, with no parameter or architecture changes.
+  - Reduced execution steps and failures caused by missing software-specific knowledge.
   - Framed a practical path for augmenting agents with external procedural evidence at inference time.
 tags:
   - GUI Agents
@@ -36,4 +37,4 @@ GUIDE tackles that gap through a run-time knowledge pipeline. It retrieves task-
 
 ## What I focused on
 
-I led the project direction, problem framing, and core system design. That included the retrieval pipeline, the annotation logic, and the way the resulting knowledge is exposed to agent execution as planning and grounding guidance.
+I led the project direction, problem framing, and core system design. That included the retrieval pipeline, the annotation logic, and the way the resulting knowledge is exposed to agent execution as planning and grounding guidance. The work was accepted to ECCV 2026.
