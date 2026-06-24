@@ -16,6 +16,10 @@ selected: true
 links:
   - label: arXiv
     href: https://arxiv.org/abs/2603.26266
+  - label: Code
+    href: https://github.com/sharryXR/GUIDE
+  - label: Dataset
+    href: https://huggingface.co/datasets/sharryXR/GUIDE-dataset
 ---
 
 GUIDE is motivated by a recurring failure mode in GUI agents: they struggle when software workflows and interface conventions fall outside the distribution of their pretraining data. Rather than retraining the whole agent, the project focuses on retrieving external knowledge at run time and converting that knowledge into agent-usable guidance.

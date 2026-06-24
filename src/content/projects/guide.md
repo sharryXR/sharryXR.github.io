@@ -24,7 +24,13 @@ tags:
   - Planning
 cover: /images/projects/guide-framework.png
 coverAlt: GUIDE framework overview
-links: []
+links:
+  - label: arXiv
+    href: https://arxiv.org/abs/2603.26266
+  - label: Code
+    href: https://github.com/sharryXR/GUIDE
+  - label: Dataset
+    href: https://huggingface.co/datasets/sharryXR/GUIDE-dataset
 ---
 
 ## Why it mattered
