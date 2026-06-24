@@ -18,6 +18,8 @@ role: Third Author
 summary: A benchmark effort for evaluating LLM-based GUI interaction in mobile environments with isolated tasks, simulator support, and behavior analysis.
 selected: false
 links:
+  - label: arXiv
+    href: https://arxiv.org/abs/2305.08144
   - label: Code
     href: https://github.com/X-LANCE/Mobile-Env
   - label: Dataset
