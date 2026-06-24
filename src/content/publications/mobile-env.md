@@ -17,7 +17,11 @@ status: under-review
 role: Third Author
 summary: A benchmark effort for evaluating LLM-based GUI interaction in mobile environments with isolated tasks, simulator support, and behavior analysis.
 selected: false
-links: []
+links:
+  - label: Code
+    href: https://github.com/X-LANCE/Mobile-Env
+  - label: Dataset
+    href: https://huggingface.co/datasets/X-LANCE/WikiHow-taskset
 ---
 
 Mobile-Env evaluates LLM-based GUI interaction in Android-like mobile settings. My work focused on task construction, traffic collection, local environment setup, and benchmarking analyses that improved icon interaction accuracy through better prompting and task design.
