@@ -11,7 +11,7 @@ authors:
   - Xinxiao Wu
   - Song-Chun Zhu
   - Qing Li
-year: 2026
+year: 2025
 status: published
 venueDisplay: AAAI 2026
 role: Contributing Author
