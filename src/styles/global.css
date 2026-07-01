@@ -262,6 +262,10 @@ main {
   grid-area: title;
   gap: 1.05rem;
   align-content: start;
+  /* bottom-align the right column so the Email / Download CV buttons line up
+     with the bottom of the left experience card, letting the headline sit lower
+     instead of hugging the top of the portrait */
+  align-self: end;
   min-width: 0;
 }
 
