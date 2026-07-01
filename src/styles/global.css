@@ -264,8 +264,10 @@ main {
   align-content: start;
   /* bottom-align the right column so the Email / Download CV buttons line up
      with the bottom of the left experience card, letting the headline sit lower
-     instead of hugging the top of the portrait */
+     instead of hugging the top of the portrait; a small bottom margin lifts the
+     whole block up slightly from the exact bottom edge */
   align-self: end;
+  margin-bottom: 0.9rem;
   min-width: 0;
 }
 
@@ -452,6 +454,10 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
+}
+
+.hero-actions {
+  justify-content: flex-end;
 }
 
 .button-link,
