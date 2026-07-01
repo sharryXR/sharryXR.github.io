@@ -6,7 +6,7 @@ export const profile = {
   location: 'Shanghai, China',
   advisor: 'Lu Chen',
   email: 'sharryXR@sjtu.edu.cn',
-  heroHeadline: 'Building agents for software and everyday work.',
+  heroHeadline: 'Solve intelligence, and then use it to solve everything else!',
   heroSummary: [
     'I am a PhD student in Computer Science at Shanghai Jiao Tong University, working toward generally capable agents that can take on work across software, devices, and everyday environments.',
     'I care about agent systems that can complete real work, from computer operation to broader everyday tasks, with an emphasis on grounded interaction, reliable training pipelines, and evaluation in real settings.',
