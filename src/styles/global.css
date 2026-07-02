@@ -458,6 +458,7 @@ main {
 
 .hero-actions {
   justify-content: flex-end;
+  padding-right: 1rem;
 }
 
 .button-link,

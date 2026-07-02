@@ -33,7 +33,9 @@ export const profile = {
   ],
   contactLinks: [
     { label: 'Email', href: 'mailto:sharryXR@sjtu.edu.cn' },
-    { label: 'Download CV', href: '/cv/rui-xie-cv-2026.pdf' }
+    { label: 'Download CV', href: '/cv/rui-xie-cv-2026.pdf' },
+    { label: 'GitHub', href: 'https://github.com/sharryXR' },
+    { label: 'Google Scholar', href: 'https://scholar.google.com/citations?user=h8zcA4sAAAAJ&hl=zh-CN' }
   ]
 };
 
