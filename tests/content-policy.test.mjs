@@ -90,6 +90,20 @@ test('MatToolBench publication is now public-facing under review', async () => {
   assert.doesNotMatch(source, /statusLabel: In Preparation|^status: in-preparation$/m);
 });
 
+test('Qwen-CUA technical report records group authorship and core contribution', async () => {
+  const source = await readFile(
+    new URL('../src/content/publications/qwen-cua.md', import.meta.url),
+    'utf8'
+  );
+
+  assert.match(source, /^title: "Qwen-CUA: Native Computer Use for \(almost\) Everything"$/m);
+  assert.match(source, /authors:\n  - "Qwen Team & XLang Lab"/m);
+  assert.match(source, /^status: published$/m);
+  assert.match(source, /^venueDisplay: arXiv Technical Report, 2026$/m);
+  assert.match(source, /^role: Core Contributor$/m);
+  assert.match(source, /https:\/\/arxiv\.org\/abs\/2608\.02352/);
+});
+
 test('ASIL project is featured with the benchmark-effect cover asset', async () => {
   const source = await readFile(
     new URL('../src/content/projects/asil.md', import.meta.url),
