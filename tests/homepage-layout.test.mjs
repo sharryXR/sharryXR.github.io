@@ -12,7 +12,7 @@ import {
 test('hero view model exposes explicit profile-rail metadata', () => {
   const hero = getHeroViewModel(profile);
 
-  assert.equal(hero.headline, 'Building agents for software and everyday work.');
+  assert.equal(hero.headline, 'Solve intelligence, and then use it to solve everything else!');
   assert.deepEqual(
     hero.summaryParagraphs,
     profile.heroSummary

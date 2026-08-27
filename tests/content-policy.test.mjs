@@ -64,16 +64,20 @@ test('publications sort by year, explicit order, then title', () => {
   );
 });
 
-test('ASIL publication content is public-safe and venue neutral', async () => {
+test('ASIL publication exposes its accepted venue and public resources', async () => {
   const source = await readFile(
     new URL('../src/content/publications/asil.md', import.meta.url),
     'utf8'
   );
 
-  assert.match(source, /^status: under-review$/m);
+  assert.match(source, /^status: published$/m);
+  assert.match(source, /^venueDisplay: Findings of EMNLP 2026$/m);
   assert.match(source, /^role: First Author$/m);
   assert.match(source, /authors:\n  - Rui Xie\n  - Lu Chen/m);
-  assert.doesNotMatch(source, /EMNLP|ACL 2026|target venue/i);
+  assert.match(source, /https:\/\/sharryxr\.github\.io\/ASIL\//);
+  assert.match(source, /https:\/\/github\.com\/sharryXR\/ASIL/);
+  assert.match(source, /https:\/\/huggingface\.co\/datasets\/sharryXR\/asil-benchmark/);
+  assert.match(source, /https:\/\/huggingface\.co\/datasets\/sharryXR\/asil-training-data/);
 });
 
 test('MatToolBench publication is now public-facing under review', async () => {
