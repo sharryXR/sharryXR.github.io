@@ -10,7 +10,7 @@ export const profile = {
   heroSummary: [
     'I am a PhD student in Computer Science at Shanghai Jiao Tong University, working toward generally capable agents that can take on work across software, devices, and everyday environments.',
     'I care about agent systems that can complete real work, from computer operation to broader everyday tasks, with an emphasis on grounded interaction, reliable training pipelines, and evaluation in real settings.',
-    "Since May 2026, I have been interning with Alibaba's Qwen team, working on post-training for agent capabilities in Qwen mainline models and task testing for computer-use domains."
+    "Since April 2026, I have been interning with Alibaba's Qwen team, participating in post-training for Qwen mainline foundation models and improving agent capabilities for computer-use domains."
   ],
   heroRail: {
     institution: 'Shanghai Jiao Tong University',
@@ -41,12 +41,12 @@ export const profile = {
 
 export const timeline = [
   {
-    period: 'May 2026 - Present',
+    period: 'Apr 2026 - Present',
     title: 'Research Intern',
     organization: 'Alibaba · Qwen Agent Post-Training Group',
     heroTimeline: true,
     summary:
-      'Working on post-training for agent capabilities in Qwen mainline models, with a focus on computer-use task testing and software-use workflows.'
+      'Participating in post-training for Qwen mainline foundation models, with a focus on improving agent capabilities for computer use.'
   },
   {
     period: '2025 - Present',

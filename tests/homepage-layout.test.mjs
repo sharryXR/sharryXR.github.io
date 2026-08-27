@@ -42,7 +42,7 @@ test('homepage featured projects helper keeps only featured items in order', () 
 test('hero timeline helper exposes four concise opening milestones including undergraduate study', () => {
   assert.deepEqual(getHeroTimeline(timeline), [
     {
-      period: 'May 2026 - Present',
+      period: 'Apr 2026 - Present',
       title: 'Research Intern',
       organization: 'Alibaba · Qwen Agent Post-Training Group'
     },
@@ -132,21 +132,21 @@ test('hero styles keep the profile column and main copy top-aligned in one panel
 });
 
 test('profile highlights agentic RL and current internship timeline', () => {
-  assert.ok(profile.heroSummary.some((paragraph) => paragraph.includes('Qwen mainline models')));
+  assert.ok(profile.heroSummary.some((paragraph) => paragraph.includes('Qwen mainline foundation models')));
   assert.ok(profile.heroSummary.some((paragraph) => paragraph.includes('computer-use')));
   assert.ok(!profile.heroSummary.some((paragraph) => paragraph.includes('foundation-model agents')));
   assert.ok(!profile.heroSummary.some((paragraph) => paragraph.includes('Qwen Foundation Model Team')));
-  assert.ok(profile.heroSummary.some((paragraph) => paragraph.includes('Since May 2026')));
+  assert.ok(profile.heroSummary.some((paragraph) => paragraph.includes('Since April 2026')));
   assert.deepEqual(profile.heroRail.researchDirections, ['GUI agents', 'LLM agents', 'Agentic RL', 'AGI']);
   assert.deepEqual(profile.researchInterests, ['GUI agents', 'LLM agents', 'Agentic RL', 'AGI']);
 
   assert.ok(
     timeline.some((item) =>
-      item.period === 'May 2026 - Present' &&
+      item.period === 'Apr 2026 - Present' &&
       item.title === 'Research Intern' &&
       item.organization === 'Alibaba · Qwen Agent Post-Training Group' &&
-      item.summary.includes('post-training for agent capabilities in Qwen mainline models') &&
-      item.summary.includes('computer-use task testing')
+      item.summary.includes('post-training for Qwen mainline foundation models') &&
+      item.summary.includes('agent capabilities for computer use')
     )
   );
   assert.ok(
