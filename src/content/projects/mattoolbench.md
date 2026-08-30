@@ -1,6 +1,6 @@
 ---
 title: MatToolBench
-period: Oct 2025 - Present
+period: Oct 2025 - May 2026
 organization: Shanghai Jiao Tong University / Suzhou Laboratory
 role: Co-first Author
 visibility: public

@@ -1,6 +1,6 @@
 ---
 title: ASIL
-period: May 2026 - Present
+period: Apr 2026 - Jul 2026
 organization: Shanghai Jiao Tong University · X-LANCE Lab
 role: First Author
 visibility: public

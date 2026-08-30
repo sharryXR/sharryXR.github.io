@@ -116,3 +116,15 @@ test('ASIL project is featured with the benchmark-effect cover asset', async () 
   assert.match(source, /^cover: \/images\/projects\/asil-benchmark-effect\.png$/m);
   assert.ok((await stat(cover)).size > 100000);
 });
+
+test('completed research projects expose their final periods', async () => {
+  const [asil, guide, mattoolbench] = await Promise.all([
+    readFile(new URL('../src/content/projects/asil.md', import.meta.url), 'utf8'),
+    readFile(new URL('../src/content/projects/guide.md', import.meta.url), 'utf8'),
+    readFile(new URL('../src/content/projects/mattoolbench.md', import.meta.url), 'utf8')
+  ]);
+
+  assert.match(asil, /^period: Apr 2026 - Jul 2026$/m);
+  assert.match(guide, /^period: Mar 2025 - Apr 2026$/m);
+  assert.match(mattoolbench, /^period: Oct 2025 - May 2026$/m);
+});

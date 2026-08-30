@@ -1,6 +1,6 @@
 ---
 title: GUIDE
-period: Mar 2025 - Present
+period: Mar 2025 - Apr 2026
 organization: Shanghai Jiao Tong University / BIGAI
 role: First Author
 visibility: public
