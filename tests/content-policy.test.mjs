@@ -74,6 +74,7 @@ test('ASIL publication exposes its accepted venue and public resources', async (
   assert.match(source, /^venueDisplay: Findings of EMNLP 2026$/m);
   assert.match(source, /^role: First Author$/m);
   assert.match(source, /authors:\n  - Rui Xie\n  - Lu Chen/m);
+  assert.match(source, /https:\/\/arxiv\.org\/abs\/2608\.26991/);
   assert.match(source, /https:\/\/sharryxr\.github\.io\/ASIL\//);
   assert.match(source, /https:\/\/github\.com\/sharryXR\/ASIL/);
   assert.match(source, /https:\/\/huggingface\.co\/datasets\/sharryXR\/asil-benchmark/);
@@ -113,6 +114,7 @@ test('ASIL project is featured with the benchmark-effect cover asset', async () 
 
   assert.match(source, /^featured: true$/m);
   assert.match(source, /^order: 1$/m);
+  assert.match(source, /https:\/\/arxiv\.org\/abs\/2608\.26991/);
   assert.match(source, /^cover: \/images\/projects\/asil-benchmark-effect\.png$/m);
   assert.ok((await stat(cover)).size > 100000);
 });

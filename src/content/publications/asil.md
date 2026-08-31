@@ -14,6 +14,8 @@ links:
   - label: Project Page
     href: https://sharryxr.github.io/ASIL/
   - label: Paper
+    href: https://arxiv.org/abs/2608.26991
+  - label: PDF
     href: https://sharryxr.github.io/ASIL/ASIL_EMNLP_2026_Findings.pdf
   - label: Code
     href: https://github.com/sharryXR/ASIL
