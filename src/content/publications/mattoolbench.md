@@ -1,21 +1,31 @@
 ---
-title: "MatToolBench: A Real-Environment Benchmark for Evaluating Multimodal Agents on Professional Materials Science Software"
+title: "MatToolBench: Benchmarking Multimodal Agents in Real-World Materials Science Workflows"
 authors:
   - Mei Wu
   - Rui Xie
   - Runyu Zhang
-  - Lu Chen
+  - Yuqiang Li
+  - Tianfan Fu
   - Bo Chen
   - Kai Yu
   - Xin Chen
+  - Lu Chen
 year: 2026
 status: under-review
 role: Co-first Author
-summary: A real-environment benchmark that evaluates multimodal agents on professional materials science workflows spanning GUI tools, code execution, and cross-tool coordination.
+summary: A real-environment benchmark with 204 tasks across 10 materials science tools, covering GUI operation, OriginPro scripting, and database queries, with expert-defined partial-credit scoring.
 selected: true
-links: []
+links:
+  - label: Project Page
+    href: https://mattoolbench.github.io/
+  - label: Paper
+    href: https://arxiv.org/abs/2609.37053
+  - label: PDF
+    href: https://arxiv.org/pdf/2609.37053
+  - label: Code
+    href: https://github.com/meiwu5/MatToolBench
 ---
 
-MatToolBench studies how well general-purpose multimodal agents transfer into professional software ecosystems. The benchmark covers multiple task modalities, including GUI operation, code-driven queries, and mixed workflows that require switching tools while preserving scientific intent.
+MatToolBench evaluates multimodal agents in a Windows 11 environment across GUI operation, OriginPro scripting, and materials database queries, with additional diagnostic tasks for cross-tool workflows.
 
-Beyond the task set itself, the project emphasizes reproducible evaluation infrastructure. It includes isolated execution environments, standardized resets, and multiple evaluation strategies that match the structure of each task type.
+Domain experts define fine-grained scoring criteria, and the GUI evaluator achieves an average F1 of 0.98. Across seven evaluated models, the highest success rates are 25% for GUI tasks and 45% for code tasks, exposing gaps in specialized workflow knowledge and artifact handoff.
