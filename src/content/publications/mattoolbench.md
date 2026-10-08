@@ -11,7 +11,8 @@ authors:
   - Xin Chen
   - Lu Chen
 year: 2026
-status: under-review
+status: preprint
+venueDisplay: arXiv Preprint, 2026
 role: Co-first Author
 summary: A real-environment benchmark with 204 tasks across 10 materials science tools, covering GUI operation, OriginPro scripting, and database queries, with expert-defined partial-credit scoring.
 selected: true

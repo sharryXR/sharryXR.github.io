@@ -11,19 +11,27 @@ authors:
   - Xinxiao Wu
   - Song-Chun Zhu
   - Qing Li
-year: 2025
+year: 2026
 status: published
 venueDisplay: AAAI 2026
 role: Contributing Author
-summary: A large-scale data construction effort that turns multimodal web tutorials into GUI trajectories for generalized agent training and evaluation.
+summary: A framework that transforms multimodal web tutorials into GUI-Net-1M, a dataset of one million trajectories across five operating systems and over 280 applications, supporting generalized GUI-agent training and evaluation.
 selected: true
 links:
+  - label: Paper
+    href: https://ojs.aaai.org/index.php/AAAI/article/view/38229
+  - label: PDF
+    href: https://ojs.aaai.org/index.php/AAAI/article/download/38229/42191
+  - label: Project Page
+    href: https://tongui-agent.github.io/
   - label: arXiv
     href: https://arxiv.org/abs/2504.12679
   - label: Code
     href: https://github.com/TongUI-agent/TongUI-agent
   - label: Dataset
     href: https://huggingface.co/datasets/Bofeee5675/GUI-Net-1M
+  - label: Models
+    href: https://huggingface.co/collections/Bofeee5675/tongui-67f611e2d48b2b6e0d2ba3ee
 ---
 
 TongUI builds large-scale training data by converting multimodal tutorials into action trajectories. My contributions were centered on evaluation work and model training support, including offline and online benchmark testing and participation in supervised fine-tuning for the resulting agent.

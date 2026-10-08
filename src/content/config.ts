@@ -10,8 +10,9 @@ const publications = defineCollection({
   schema: z.object({
     title: z.string(),
     authors: z.array(z.string()),
+    authorDisplay: z.string().optional(),
     year: z.number(),
-    status: z.enum(['published', 'under-review', 'in-preparation']),
+    status: z.enum(['published', 'preprint', 'under-review', 'in-preparation']),
     statusLabel: z.string().optional(),
     venueDisplay: z.string().optional(),
     order: z.number().default(999),

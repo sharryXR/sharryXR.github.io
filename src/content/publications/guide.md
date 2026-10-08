@@ -14,8 +14,12 @@ role: First Author
 summary: A training-free, plug-and-play framework that retrieves task-relevant tutorial videos and distills transferable planning and grounding knowledge for domain-specific GUI agents, yielding +4.47 to +7.48 point gains on OSWorld without modifying agent parameters.
 selected: true
 links:
+  - label: Project Page
+    href: https://sharryxr.github.io/GUIDE/
   - label: arXiv
     href: https://arxiv.org/abs/2603.26266
+  - label: PDF
+    href: https://arxiv.org/pdf/2603.26266
   - label: Code
     href: https://github.com/sharryXR/GUIDE
   - label: Dataset

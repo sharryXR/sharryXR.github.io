@@ -26,7 +26,7 @@ const publications: PublicationCard[] = publicationEntries
     display: formatPublicationDisplay(entry.data)
   }));
 
-const selectedPublications = sortPublications(publications).filter((publication) => publication.selected).slice(0, 4);
+const sortedPublications = sortPublications(publications);
 
 const projectEntries = await getCollection('projects');
 const projects: ProjectCard[] = getVisibleProjects(
@@ -120,13 +120,13 @@ const heroTimeline = getHeroTimeline(timeline);
   <section class="section-block" data-reveal>
     <div class="section-header">
       <div>
-        <span class="eyebrow">Selected publications</span>
-        <h2>Recent papers and ongoing research threads.</h2>
+        <span class="eyebrow">Publications &amp; reports</span>
+        <h2>All papers, technical reports, and team releases.</h2>
       </div>
-      <a class="link-pill" href="/publications">View all publications</a>
+      <a class="link-pill" href="/publications">Publication index</a>
     </div>
     <div class="publication-grid">
-      {selectedPublications.map((publication) => (
+      {sortedPublications.map((publication) => (
         <article class="publication-card">
           <header>
             <span class:list={['status-badge', { warm: publication.status !== 'published' }]}>
@@ -140,7 +140,7 @@ const heroTimeline = getHeroTimeline(timeline);
           </header>
           <p>{publication.summary}</p>
           <div class="mini-meta">
-            <span>{publication.authors.join(', ')}</span>
+            <span>{publication.authorDisplay ?? publication.authors.join(', ')}</span>
           </div>
           {publication.links.length > 0 && (
             <div class="link-pills">

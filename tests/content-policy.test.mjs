@@ -81,25 +81,27 @@ test('ASIL publication exposes its accepted venue and public resources', async (
   assert.match(source, /https:\/\/huggingface\.co\/datasets\/sharryXR\/asil-training-data/);
 });
 
-test('MatToolBench publication is now public-facing under review', async () => {
+test('MatToolBench publication identifies its public arXiv preprint', async () => {
   const source = await readFile(
     new URL('../src/content/publications/mattoolbench.md', import.meta.url),
     'utf8'
   );
 
-  assert.match(source, /^status: under-review$/m);
+  assert.match(source, /^status: preprint$/m);
+  assert.match(source, /^venueDisplay: arXiv Preprint, 2026$/m);
   assert.doesNotMatch(source, /statusLabel: In Preparation|^status: in-preparation$/m);
 });
 
-test('Qwen-CUA technical report records group authorship and core contribution', async () => {
+test('Qwen-CUA technical report records named authorship and core contribution', async () => {
   const source = await readFile(
     new URL('../src/content/publications/qwen-cua.md', import.meta.url),
     'utf8'
   );
 
   assert.match(source, /^title: "Qwen-CUA: Native Computer Use for \(almost\) Everything"$/m);
-  assert.match(source, /authors:\n  - "Qwen Team & XLang Lab"/m);
-  assert.match(source, /^status: published$/m);
+  assert.match(source, /authors:\n  - Dunjie Lu\n  - Shuai Bai/m);
+  assert.match(source, /^  - Rui Xie$/m);
+  assert.match(source, /^status: preprint$/m);
   assert.match(source, /^venueDisplay: arXiv Technical Report, 2026$/m);
   assert.match(source, /^role: Core Contributor$/m);
   assert.match(source, /https:\/\/arxiv\.org\/abs\/2608\.02352/);

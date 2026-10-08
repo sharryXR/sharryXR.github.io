@@ -12,14 +12,17 @@ authors:
   - Hongshen Xu
   - Ruisheng Cao
   - Kai Yu
-year: 2025
-status: under-review
+year: 2023
+status: preprint
+venueDisplay: arXiv Preprint, 2023
 role: Third Author
 summary: A benchmark effort for evaluating LLM-based GUI interaction in mobile environments with isolated tasks, simulator support, and behavior analysis.
 selected: false
 links:
   - label: arXiv
     href: https://arxiv.org/abs/2305.08144
+  - label: PDF
+    href: https://arxiv.org/pdf/2305.08144
   - label: Code
     href: https://github.com/X-LANCE/Mobile-Env
   - label: Dataset

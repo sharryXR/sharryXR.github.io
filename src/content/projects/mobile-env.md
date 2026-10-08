@@ -19,7 +19,13 @@ tags:
   - Mobile Agents
   - Benchmarking
   - Evaluation
-links: []
+links:
+  - label: Paper
+    href: https://arxiv.org/abs/2305.08144
+  - label: Code
+    href: https://github.com/X-LANCE/Mobile-Env
+  - label: Dataset
+    href: https://huggingface.co/datasets/X-LANCE/WikiHow-taskset
 ---
 
 Mobile-Env broadened my perspective on interface evaluation. The same agent architecture can behave very differently when interaction is mediated by mobile layouts, icon-heavy interfaces, and app-specific constraints. That made it a useful complement to my later desktop and professional-software work.

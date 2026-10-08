@@ -16,14 +16,14 @@ const sortedPublications = sortPublications(publications);
 
 <BaseLayout
   pageTitle="Publications"
-  description="Selected publications and research outputs by Rui Xie."
+  description="All papers, technical reports, and team releases by Rui Xie."
 >
   <section class="page-heading panel" data-reveal>
     <span class="eyebrow">Publications</span>
-    <h1>Papers, collaborations, and evolving research directions.</h1>
+    <h1>Papers, technical reports, and team releases.</h1>
     <p>
-      This page keeps public-facing publication information concise. Works that are still under review use
-      venue-neutral status labels until their outcomes can be shared.
+      Explore my work across agent interfaces, computer use, training, and real-environment evaluation,
+      with links to papers, project pages, code, models, and datasets.
     </p>
   </section>
 
@@ -39,7 +39,7 @@ const sortedPublications = sortPublications(publications);
             <span>{publication.year}</span>
           </div>
           <h3>{publication.title}</h3>
-          <p>{publication.authors.join(', ')}</p>
+          <p>{publication.authorDisplay ?? publication.authors.join(', ')}</p>
           <p>{publication.summary}</p>
           {publication.links.length > 0 && (
             <div class="link-pills">
