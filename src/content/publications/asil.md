@@ -5,7 +5,7 @@ authors:
   - Lu Chen
 year: 2026
 status: published
-venueDisplay: Findings of EMNLP 2026
+venueDisplay: Findings of EMNLP 2026 (Accepted)
 order: 0
 role: First Author
 summary: An agent-native interface that replaces screenshot-and-click control with structured software state and code-executable semantic actions, reaching 81.6 on GPT-5.4 under a 15-action budget versus 6.6 for screenshot GUI control under 50 steps.

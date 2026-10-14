@@ -14,7 +14,7 @@ contributions:
   - Integrated the resulting knowledge into downstream agent execution without retraining the target agent.
 results:
   - Accepted to ECCV 2026.
-  - Improved OSWorld success rate by +4.47 to +7.48 percentage points across both single-model and multi-agent settings, with no parameter or architecture changes.
+  - Improved OSWorld average score by 4.47 to 7.48 percentage points across both single-model and multi-agent settings, with no parameter or architecture changes.
   - Reduced execution steps and failures caused by missing software-specific knowledge.
   - Framed a practical path for augmenting agents with external procedural evidence at inference time.
 tags:

@@ -9,9 +9,9 @@ authors:
   - Qing Li
 year: 2026
 status: published
-venueDisplay: ECCV 2026
+venueDisplay: ECCV 2026 (Accepted)
 role: First Author
-summary: A training-free, plug-and-play framework that retrieves task-relevant tutorial videos and distills transferable planning and grounding knowledge for domain-specific GUI agents, yielding +4.47 to +7.48 point gains on OSWorld without modifying agent parameters.
+summary: A training-free, plug-and-play framework that retrieves task-relevant tutorial videos and distills transferable planning and grounding knowledge for domain-specific GUI agents, improving OSWorld average score by 4.47 to 7.48 percentage points without modifying agent parameters.
 selected: true
 links:
   - label: Project Page
@@ -30,4 +30,4 @@ GUIDE is motivated by a recurring failure mode in GUI agents: they struggle when
 
 The system combines video retrieval, automatic annotation, and agent-side integration. It uses task-aware search over tutorial videos, extracts structured hints about procedure and interface interaction, and injects those hints into downstream agent execution without changing the underlying agent architecture.
 
-On OSWorld, GUIDE works as an architecture-agnostic, plug-and-play component for both multi-agent systems and single-model agents, delivering +4.47 to +7.48 percentage-point success-rate gains and fewer execution steps without any parameter updates. The paper was accepted to ECCV 2026.
+On OSWorld, GUIDE works as an architecture-agnostic, plug-and-play component for both multi-agent systems and single-model agents, improving average score by 4.47 to 7.48 percentage points and reducing execution steps without any parameter updates. The paper was accepted to ECCV 2026.

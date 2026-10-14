@@ -12,7 +12,9 @@ selected: false
 links:
   - label: Release Blog
     href: https://qwen.ai/blog?id=qwen3.8
-  - label: Repository
+  - label: Release Repository
+    href: https://github.com/AlibabaCloud-Official/Qwen3.8-max
+  - label: Model Repository
     href: https://github.com/QwenLM/Qwen3.8
   - label: Models
     href: https://huggingface.co/collections/Qwen/qwen38

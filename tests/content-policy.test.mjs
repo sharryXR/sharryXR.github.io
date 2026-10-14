@@ -71,7 +71,7 @@ test('ASIL publication exposes its accepted venue and public resources', async (
   );
 
   assert.match(source, /^status: published$/m);
-  assert.match(source, /^venueDisplay: Findings of EMNLP 2026$/m);
+  assert.match(source, /^venueDisplay: Findings of EMNLP 2026 \(Accepted\)$/m);
   assert.match(source, /^role: First Author$/m);
   assert.match(source, /authors:\n  - Rui Xie\n  - Lu Chen/m);
   assert.match(source, /https:\/\/arxiv\.org\/abs\/2608\.26991/);
